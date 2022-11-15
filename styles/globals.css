@@ -10,3 +10,8 @@
         font-style: normal;
     }
 }
+
+.grandient{
+    background: linear-gradient(to left,black,transparent,black);
+    z-index: 15
+}

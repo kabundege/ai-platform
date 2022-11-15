@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/globals.css";
 import { FiUser, FiUsers } from "react-icons/fi";
 import { AiOutlineBank } from "react-icons/ai";
 import background from "../public/assets/bg.jpg";
@@ -100,6 +101,28 @@ export default function Home() {
               <div className="h-1 w-5 bg-blue-100"/>
             </div>
           </section>
+        </div>
+        <div className="w-full relative bg-green-500 mt-16 h-60">
+          <div className="max-w-5xl mx-auto relative z-20">
+            <button className="absolute w-32 h-32 -top-16 left-0 bg-blue-500 text-lg border-4 border-black text-white rounded-full z-20">
+              How we 
+              <br />
+              Operate
+            </button>
+          </div>
+          <div className="w-full h-full text-gray-300 text-5xl relative z-10">
+            <div className="flex max-w-5xl w-full pb-5 mx-auto h-full items-end  justify-between">
+              {
+                React.Children.toArray(
+                  ['Plan','Design','Develop','Test','Feedback'].map(
+                    (one,index) => <> { index ? <> &bull; </> : null } <p className="text-white text-5xl font-semibold">{one}</p> </>
+                  )
+                )
+              }
+            </div>
+            <div className="absolute bottom-0  bg-red-500 w-screen h-full grandient" />
+          </div>
+          <Image src={background} className="w-full h-full absolute top-0 left-0 object-cover" alt="" />
         </div>
       </div>
     </div>
