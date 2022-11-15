@@ -102,7 +102,7 @@ export default function Home() {
             </div>
           </section>
         </div>
-        <div className="w-full relative bg-green-500 mt-16 h-60">
+        <div className="w-full relative mt-16 h-60">
           <div className="max-w-5xl mx-auto relative z-20">
             <button className="absolute w-32 h-32 -top-16 left-0 bg-blue-500 text-lg border-4 border-black text-white rounded-full z-20">
               How we 
@@ -110,17 +110,17 @@ export default function Home() {
               Operate
             </button>
           </div>
-          <div className="w-full h-full text-gray-300 text-5xl relative z-10">
-            <div className="flex max-w-5xl w-full pb-5 mx-auto h-full items-end  justify-between">
+          <div className="w-full h-full text-5xl relative z-10">
+            <div className="flex max-w-5xl text-gray-300 w-full pb-5 mx-auto h-full items-end  justify-between">
               {
                 React.Children.toArray(
-                  ['Plan','Design','Develop','Test','Feedback'].map(
-                    (one,index) => <> { index ? <> &bull; </> : null } <p className="text-white text-5xl font-semibold">{one}</p> </>
+                  ['Plan','Design','Develop','Test','Deploy','Feedback'].map(
+                    (one,index) => <> { index ? <> &bull; </> : null } <p className="text-white text-4xl font-semibold">{one}</p> </>
                   )
                 )
               }
             </div>
-            <div className="absolute bottom-0  bg-red-500 w-screen h-full grandient" />
+            <div className="absolute bottom-0 w-screen h-full grandient" />
           </div>
           <Image src={background} className="w-full h-full absolute top-0 left-0 object-cover" alt="" />
         </div>

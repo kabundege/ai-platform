@@ -12,6 +12,6 @@
 }
 
 .grandient{
-    background: linear-gradient(to left,black,transparent,black);
-    z-index: 15
+    background: linear-gradient(to left,red,transparent,'rgba(0,0,0,.5)',red) !important;
+    z-index: 20
 }
