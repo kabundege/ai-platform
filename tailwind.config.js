@@ -13,6 +13,9 @@ module.exports = {
       left:{
         "1/5":'20%'
       },
+      maxWidth:{
+        '10xl':'1500px'
+      }
     },
   },
   plugins: [],
