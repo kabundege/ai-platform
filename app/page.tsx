@@ -51,7 +51,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="relative w-11/12 md:w-1/4 mx-auto h-56">
+        <div className="relative w-11/12 md:w-1/4 mx-auto md:mx-0 h-56">
           <button className="w-28 h-28 absolute md:relative top-1/4 md:top-0 left-1/3 md:-left-14 bg-orange-500 text-xl border-0 md:border-4 border-white text-white font-semibold md:font-medium rounded-full z-10">
             Get In
             <br />

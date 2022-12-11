@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../../public/assets/ai_logo.png'
 import { flexer } from '../../styles/comon.styles'
-import { AiOutlineArrowRight } from 'react-icons/ai'
+import { TbLogin } from 'react-icons/tb'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -25,12 +25,12 @@ import Link from 'next/link'
                 </li>
             </ul>
         </div>
-        <div className='bg-black hover:bg-gray-800 py-2 px-5 flex items-center group'>
+        <Link href='/login' className='bg-black rounded-md hover:bg-gray-800 cursor-pointer py-2 px-5 flex items-center group'>
             <button className='text-white text-sm'>
-                Get in Touch
+                Log In
             </button>
-            <AiOutlineArrowRight className='text-white ml-2 text-xs group-hover:translate-x-1 transition ease-linear' />
-        </div>
+            <TbLogin className='text-white ml-2 text-xs group-hover:translate-x-1 transition ease-linear rotate-180' />
+        </Link>
     </header>
   )
 }
