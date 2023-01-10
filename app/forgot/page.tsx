@@ -6,13 +6,14 @@ import Input from '../Components/Input'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { forgotSchema } from '../../validation/auth.schema'
+import Layout from '../../Components/Layout'
 
 interface Creds {
   phone: string,
 }
 
 
-export default function Login() {
+function Forgot() {
 
   const {
     register,
@@ -43,3 +44,9 @@ export default function Login() {
     </form>
   )
 }
+
+export default () => (
+  <Layout>
+    <Forgot/>
+  </Layout>
+)

@@ -9,6 +9,7 @@ import SelectField from "../Components/SelectField";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterSchema } from "../../validation/auth.schema";
+import Layout from "../../Components/Layout";
 
 interface Creds {
   province: string;
@@ -19,7 +20,7 @@ interface Creds {
   confirm: string;
 }
 
-export default function Register() {
+function Register() {
 
   const {
     register,
@@ -99,3 +100,9 @@ export default function Register() {
     </form>
   );
 }
+
+export default () => (
+  <Layout>
+    <Register/>
+  </Layout>
+)

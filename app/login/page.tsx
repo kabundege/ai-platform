@@ -1,12 +1,15 @@
 "use client"
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Button from '../Components/Button'
 import Input from '../Components/Input'
 import PasswordInput from '../Components/PasswordInput'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoginSchema } from '../../validation/auth.schema'
+import Layout from '../../Components/Layout'
+import { StoreContext } from '../context'
+import { useRouter } from 'next/navigation'
 
 interface Creds {
   phone: string,
@@ -14,7 +17,9 @@ interface Creds {
 }
 
 
-export default function Login() {
+function SIGNIN() {
+  const router = useRouter()
+  const { handleContext,token } = useContext(StoreContext)
 
   const {
     register,
@@ -27,7 +32,17 @@ export default function Login() {
 
   const submitHandler = handleSubmit((data)=>{
     // code here
+    console.log("got here with ",data)
+    localStorage.setItem('token','token')
+    handleContext('token','token')
   })
+
+  useEffect(()=>{
+    console.log(token)
+    if(token){
+      router.replace('/dashboard')
+    }
+  },[token])
 
   return (
     <form className='mx-auto w-96 mt-20' onSubmit={submitHandler}>
@@ -53,3 +68,9 @@ export default function Login() {
     </form>
   )
 }
+
+export default () => (
+  <Layout>
+    <SIGNIN/>
+  </Layout>
+)

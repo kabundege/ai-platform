@@ -16,7 +16,7 @@ import Link from 'next/link'
                     <div className='w-0 group-hover:w-1/2 border-b-2 border-gray-300' />
                 </li>
                 <li className='mr-5 group'>
-                    <Link href='/' className='text-base font-light'>Service</Link>
+                    <Link href='/dashboard' className='text-base font-light'>Service</Link>
                     <div className='w-0 group-hover:w-1/2 border-b-2 border-gray-300' />
                 </li>
                 <li className='mr-5 group'>
