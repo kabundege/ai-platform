@@ -2,13 +2,14 @@ import React, { useContext } from 'react'
 import logo from '../assets/ai_logo.png'
 import { flexer } from '../constants/comon.styles'
 import { TbLogin } from 'react-icons/tb'
-import { Link, useNavigate } from 'react-router-dom'
+import { NavLink,Link, useNavigate, useLocation } from 'react-router-dom'
 import { Image } from './Image'
 import { StoreContext } from '../context'
 
  const Header = () => {
     const { isAuth,logout } = useContext(StoreContext)
     const navigation = useNavigate()
+    const {pathname} = useLocation()
 
     const handleAuth = () => {
         if(!isAuth){
@@ -26,20 +27,20 @@ import { StoreContext } from '../context'
                 </Link>
                 <ul className={flexer+"hidden md:flex"}>
                     <li className='mr-5 group'>
-                        <Link to='/contacts' className='text-base font-light'>Contacts</Link>
-                        <div className='w-0 group-hover:w-1/2 border-b-2 border-gray-300' />
+                        <NavLink to='/contacts' className='text-base font-light'>Contacts</NavLink>
+                        <div className={`${pathname==='/contacts'?'w-1/2':'w-0 group-hover:w-1/2'} border-b-2 border-gray-300`} />
                     </li>
                     <li className={` ${!isAuth&&"hidden"} mr-5 group`}>
-                        <Link to='/service' className='text-base font-light'>Service</Link>
-                        <div className='w-0 group-hover:w-1/2 border-b-2 border-gray-300' />
+                        <NavLink to='/service' className='text-base font-light'>Service</NavLink>
+                        <div className={`${pathname==='/service'?'w-1/2':'w-0 group-hover:w-1/2'} border-b-2 border-gray-300`} />
                     </li>
                     <li className={` ${!isAuth&&"hidden"} mr-5 group`}>
-                        <Link to='/dashboard' className='text-base font-light'>Dashboard</Link>
-                        <div className='w-0 group-hover:w-1/2 border-b-2 border-gray-300' />
+                        <NavLink to='/dashboard' className='text-base font-light'>Dashboard</NavLink>
+                        <div className={`${pathname==='/dashboard'?'w-1/2':'w-0 group-hover:w-1/2'} border-b-2 border-gray-300`} />
                     </li>
                     <li className={` ${!isAuth&&"hidden"} mr-5 group`}>
-                        <Link to='/farms' className='text-base font-light'>Farms</Link>
-                        <div className='w-0 group-hover:w-1/2 border-b-2 border-gray-300' />
+                        <NavLink to='/farms' className='text-base font-light'>Farms</NavLink>
+                        <div className={`${pathname==='/farms'?'w-1/2':'w-0 group-hover:w-1/2'} border-b-2 border-gray-300`} />
                     </li>
                 </ul>
             </div>

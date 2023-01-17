@@ -16,13 +16,13 @@ interface Info {
 
 const testData = [
   {
-    userName:"Nyabisindu",
+    userName:"Farm 01",
     timestamp: Date.now(),
     userLocation:"kk 555 st",
     predictions: ['Deasease A','Deasease C','Deasease B']
   },
   {
-    userName:"Rwinkwavu",
+    userName:"Farm 02",
     timestamp: Date.now(),
     userLocation:"kk 333 st",
     predictions: ['Deasease C','Deasease A','Deasease B']
@@ -40,7 +40,7 @@ const columns:any = (isPublic = false) => [
             <GiFarmTractor className='text-lg text-orange-500 mr-2'/>
           )
         }
-        <span className="font-medium text-base">{isPublic?'User':'Farm'} Name</span>
+        <span className="font-medium text-base">Farm Name</span>
       </p>
     ),
     selector: (row:Info) => <p className="font-medium text-base truncate">{row.userName}</p>
