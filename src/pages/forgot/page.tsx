@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { forgotSchema } from '../../validation/auth.schema'
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
+import Transitions from "../../Components/Transition";
 
 interface Creds {
   phone: string,
@@ -25,7 +26,8 @@ function Forgot() {
   })
 
   return (
-    <form className='mx-auto w-96 mt-20' onSubmit={submitHandler}>
+    <Transitions>
+      <form className='mx-auto w-96 mt-20' onSubmit={submitHandler}>
         <h1 className='text-xl font-bold'>Reset password</h1>
         <div className='my-10' />
         <Input
@@ -37,7 +39,8 @@ function Forgot() {
           <span>Remembered something ?</span>
           <Link to="/login" className='font-bold hover:text-gray-900 ml-1 text-black'>Try again</Link>
         </p>
-    </form>
+      </form>
+    </Transitions>
   )
 }
 

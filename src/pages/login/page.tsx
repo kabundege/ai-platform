@@ -9,6 +9,7 @@ import PasswordInput from '../../Components/PasswordInput';
 import Button from '../../Components/Button';
 import useFetch from '../../hooks/useFetch';
 import { SigninApi } from '../../API/auth';
+import Transitions from '../../Components/Transition';
 
 interface Creds {
   phone: string,
@@ -49,27 +50,29 @@ function SIGNIN() {
   },[token,navigate])
 
   return (
-    <form className='mx-auto w-96 mt-20' onSubmit={submitHandler}>
-        <h1 className='text-xl font-bold'>Sign In</h1>
-        <div className='my-10' />
-        <Input
-          register={register('phone')} error={errors.phone?.message} type="tel" placeholder='Phone number'
-          LeftIcon={<p className='text-bash tracking-wider text-sm'> (+250)</p>} />
-        <div className='my-5' />
-        <PasswordInput register={register('password')}  error={errors.password?.message} />
-        <div className='my-5' />
-        <Link to="/forgot">
-            <p className='text-center w-96 text-bash hover:text-ashShade-1'>
-                Forgot Password ?
-            </p>
-        </Link>
-        <div className='my-10' />
-        <Button {...{isLoading}} text="Login" />
-        <p className="flex items-center justify-center mt-5 text-bash text-sm">
-          <span >Don't have an account yet ?</span>
-          <Link to="/register" className='font-bold hover:text-gray-900 ml-1 text-black'>Register</Link>
-        </p>
-    </form>
+    <Transitions>
+      <form className='mx-auto w-96 mt-20' onSubmit={submitHandler}>
+          <h1 className='text-xl font-bold'>Sign In</h1>
+          <div className='my-10' />
+          <Input
+            register={register('phone')} error={errors.phone?.message} type="tel" placeholder='Phone number'
+            LeftIcon={<p className='text-bash tracking-wider text-sm'> (+250)</p>} />
+          <div className='my-5' />
+          <PasswordInput register={register('password')}  error={errors.password?.message} />
+          <div className='my-5' />
+          <Link to="/forgot">
+              <p className='text-center w-96 text-bash hover:text-ashShade-1'>
+                  Forgot Password ?
+              </p>
+          </Link>
+          <div className='my-10' />
+          <Button {...{isLoading}} text="Login" />
+          <p className="flex items-center justify-center mt-5 text-bash text-sm">
+            <span >Don't have an account yet ?</span>
+            <Link to="/register" className='font-bold hover:text-gray-900 ml-1 text-black'>Register</Link>
+          </p>
+      </form>
+    </Transitions>
   )
 }
 
