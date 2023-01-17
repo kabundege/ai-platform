@@ -1,0 +1,1 @@
+export const Provinces = [{ value:'kigali' },{ value:'North' },{ value:'South' },{ value:'East' },{ value:'West' }]
