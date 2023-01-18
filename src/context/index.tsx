@@ -58,7 +58,10 @@ const StoreProvider:FC<Props> = ({ children }) =>{
     }
 
     const logout  = () => {
-        Promise.resolve(localStorage.clear())
+        Promise.resolve([
+            localStorage.removeItem('token'),
+            localStorage.removeItem('user')
+        ])
         .then(()=>{setState(initialState)})
     }
 
