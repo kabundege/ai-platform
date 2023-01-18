@@ -2,7 +2,10 @@ import { createContext, FC, ReactNode, useEffect, useState} from 'react';
 
 export type User = {
     name:string,
-    role: string
+    isAdmin:boolean,
+    firstName: string,
+    lastName: string,
+    phone: string
 }
 
 type ContextState = {
@@ -39,8 +42,11 @@ const StoreProvider:FC<Props> = ({ children }) =>{
 
     useEffect(()=>{
         const token = localStorage.getItem('token');
-        if(token){
-            setState(prev => ({...prev,token,isAuth:true}))
+        const user = localStorage.getItem('user');
+        if(token&&user){
+            setState(prev => ({
+                ...prev, token, user: JSON.parse(user), isAuth:true
+            }))
         }
     },[])
       

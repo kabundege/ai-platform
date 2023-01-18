@@ -65,7 +65,7 @@ const WeatherComponent = ({label,value,Icon}:{label:string,value:string|number|R
     </div>
 )
 
-export default function FarmOne({index}:{index:number}) {
+export default function FarmOne({name,index}:{name:string,index:number}) {
     const [ showModal,setModal ] = useState(false)
     const [ isDeleted,setDeleted ] = useState(false)
     const [ isActive,setActive ] = useState(false)
@@ -171,7 +171,7 @@ export default function FarmOne({index}:{index:number}) {
             <div onClick={toggleModal} className='group border-2 relative h-48 p-5 hover:bg-slate-100 cursor-pointer flex flex-col text-left'>
                 <h1 className='text-5xl text-gray-300'>{index}</h1>
                 <GiFarmTractor className='absolute top-5 right-5 text-2xl text-gray-500' />
-                <h3 className='text-3xl font-bold mt-auto'>Farm {String(index+1).padStart(2,'0')}</h3>
+                <h3 className='text-3xl font-bold mt-auto capitalize'>{name}</h3>
                 <p className='text-base w-full font-light text-gray-500 flex flex-end'>
                     <span>View</span>
                     <span className='hidden group-hover:block transform translate-x-5 text-gray-200'>&#8594;</span>

@@ -8,21 +8,6 @@ import { Image } from "../../Components/Image";
 import {Link} from "react-router-dom";
 import { BsLinkedin, BsTwitter } from "react-icons/bs";
 
-const usersData = [
-  {
-    userName:"John Doe",
-    timestamp: Date.now(),
-    userLocation:"kk 555 st",
-    predictions: ['Deasease A','Deasease C','Deasease B']
-  },
-  {
-    userName:"Billy Doe",
-    timestamp: Date.now(),
-    userLocation:"kk 333 st",
-    predictions: ['Deasease C','Deasease A','Deasease B']
-  }
-]
-
 export default function Landing() {
 
   const SectionOne = (
@@ -101,16 +86,11 @@ export default function Landing() {
       <section className="w-full md:w-1/2 mt-10 md:mt-0">
         <Image src={background} className="w-full h-56" alt="" />
         <p className="text-gray-500 text-base font-light mt-10 mb-5 px-5 md:px-0">
-          <strong className="text-gray-100 font-normal">Sit tempor anim ea mollit magna ullamco.</strong> Esse ad
-          qui voluptate qui laboris pariatur laboris veniam minim culpa ea
-          pariatur. Enim labore mollit proident laboris ad non magna dolore
-          fugiat. <strong className="text-gray-100 font-normal">Eiusmod proident velit esse enim. </strong>
-        </p>
-        <p className="text-gray-500 text-base font-light px-5 md:px-0"> 
-          <strong className="text-gray-100 font-normal">Labore cupidatat veniam velit et eu. </strong>
-          Dolor veniam voluptate ipsum enim reprehenderit qui
-          sint occaecat laboris proident laborum anim laborum. Deserunt qui
-          labore et non.
+          <strong className="text-gray-100 font-normal">Are you tired of worrying about the health of your chickens ?</strong> Our service is here to take that stress away! Our state-of-the-art <strong className="text-gray-100 font-normal">system can quickly and accurately detect if your chickens are sick</strong>, just by analyzing a simple image.
+          <br/><br/>
+          No more guessing games or waiting for symptoms to appear. With our service, you can take a picture of your chicken and have peace of mind knowing that you'll have <strong className="text-gray-100 font-normal">a fast and accurate diagnosis.</strong>
+          <br/><br/>
+          <strong className="text-gray-100 font-normal">Not only will this save you time and energy,</strong> but it also ensures the welfare of your chickens by enabling early treatment. With our service, you can keep your chickens healthy and happy, which in turn leads to a more productive and profitable poultry farm. By using our service, you'll be helping to improve the overall health of the chickens and the productivity of the poultry industry while giving you more time to focus on what you love most: your chickens.
         </p>
         <div className="flex my-5 ml-5 md:ml-0">
           <div className="h-1 w-1/5 bg-orange-500"/>
@@ -148,7 +128,7 @@ export default function Landing() {
   );
 
   const sectionFour = (
-    <Dashboard type="public" data={usersData} />
+    <Dashboard />
   )
 
   const footer = (
@@ -161,8 +141,7 @@ export default function Landing() {
             className="w-24 mb-2 bg-gray-900"
           />
           <p className="md:w-96">
-            Adipisicing nisi dolor fugiat officia do Lorem proident sit enim voluptate nisi minim occaecat laborum. 
-            Sint aliquip irure eu nostrud veniam veniam magna.
+            We offer a service that helps farmers and people in the poultry industry quickly identify if their chickens are sick. 
           </p>
         </div>
         <div className="w-full md:w-fit grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:grid-flow-col mt-10 mt:mt-0  lg:gap-x-10 mb-6  lg::mt-0">

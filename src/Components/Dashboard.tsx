@@ -1,69 +1,89 @@
-'use client'
 import React, { useEffect } from 'react'
-import DataTable from 'react-data-table-component'
-import { RiUser6Fill } from 'react-icons/ri';
+import DataTable from 'react-data-table-component';
 import { BiCurrentLocation } from 'react-icons/bi';
 import { SiEquinixmetal } from 'react-icons/si';
-import { GiFarmTractor, GiSandsOfTime } from 'react-icons/gi';
 import Moment from 'react-moment';
 import 'moment-timezone';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+import { GiSandsOfTime } from 'react-icons/gi';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top' as const,
+    },
+    title: {
+      display: true,
+      text: 'Chart.js Bar Chart',
+    },
+  },
+};
+
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+export const barData = {
+  labels,
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: labels.map(() => Math.floor(Math.random()*1000)),
+      backgroundColor: '#FF8A34',
+    },
+    {
+      label: 'Dataset 2',
+      data: labels.map(() => Math.floor(Math.random()*1000)),
+      backgroundColor: '#222',
+    },
+  ],
+};
 
 interface Info {
-  userName: string,
+  timestamp: number,
   userLocation: string,
-  predictions: string[],
-  timestamp: number
-}
-
-type dataByRole = {
-  user: undefined | null
-  public: Info[]
-}
-
-interface Props<T extends keyof dataByRole> {
-  type: T
-  data: dataByRole[T]
+  predictions: {yes:number,no:number},
 }
 
 const testData = [
   {
-    userName:"Nyabisindu",
+    userLocation:"Huye",
     timestamp: Date.now(),
-    userLocation:"kk 555 st",
-    predictions: ['Deasease A','Deasease C','Deasease B']
+    predictions: { yes:200, no:200  }
   },
   {
-    userName:"Rwinkwavu",
     timestamp: Date.now(),
-    userLocation:"kk 333 st",
-    predictions: ['Deasease C','Deasease A','Deasease B']
+    userLocation: "Musanze",
+    predictions: { yes:200, no:350  }
   }
 ]
 
-const Dashboard = <T extends keyof dataByRole>(props:Props<T>) => {
+const Dashboard = () => {
   const [ data,setData ] = React.useState<Info[]>([])
 
-  const columns:any = (isPublic = false) => [
-    {
-      name: (
-        <p className="flex items-center">
-          {
-            !isPublic ? (
-              <RiUser6Fill className='text-lg text-orange-500 mr-2' /> 
-            ) : (
-              <GiFarmTractor className='text-lg text-orange-500 mr-2'/>
-            )
-          }
-          <span className="font-medium text-base">{isPublic?'User':'Farm'} Name</span>
-        </p>
-      ),
-      selector: (row:Info) => <p className="font-medium text-base truncate">{row.userName}</p>
-    },
+  const columns:any = [
     {
       name: (
         <p className="flex items-center">
           <BiCurrentLocation className='text-lg text-orange-500 mr-2' />
-          <span className="font-medium text-base">Farm Location</span>
+          <span className="font-medium text-base">Provinces</span>
         </p>
       ),
       selector: (row:Info) => <p className="font-medium text-base truncate">{row.userLocation}</p>,
@@ -72,50 +92,62 @@ const Dashboard = <T extends keyof dataByRole>(props:Props<T>) => {
       name: (
         <p className="flex items-center">
           <SiEquinixmetal className='text-lg text-orange-500 mr-2' /> 
-          <span className="font-medium text-base">Predictions</span>
+          <span className="font-medium text-base">Found healthy</span>
         </p>
       ),
       selector: (row:Info) => (
         <p className="font-medium text-sm truncate">
-          {
-            React.Children.toArray(
-              row.predictions.map((one,index)=><span>{index?", ":''}{one}</span>)
-            )
-          }
+          {row.predictions.yes} 
         </p>
       ),
     },
     {
       name: (
         <p className="flex items-center">
-          <GiSandsOfTime className='text-lg text-orange-500 mr-2'/> 
-          <span className="font-medium text-base">{isPublic?'Temistamp':'Created At'}</span>
+          <SiEquinixmetal className='text-lg text-orange-500 mr-2' /> 
+          <span className="font-medium text-base">Found Sick</span>
         </p>
       ),
-      selector: (row:Info) => <Moment className='font-medium text-sm truncate' fromNow>{row.timestamp}</Moment>,
-    }
+      selector: (row:Info) => (
+        <p className="font-medium text-sm truncate">
+          {row.predictions.no} 
+        </p>
+      ),
+    },
+    {
+      name: (
+        <p className="flex items-center">
+          <GiSandsOfTime className="text-lg text-orange-500 mr-2" />
+          <span className="font-medium text-base">
+            Temistamp
+          </span>
+        </p>
+      ),
+      selector: (row: Info) => (
+        <Moment className="font-medium text-sm truncate" fromNow>
+          {row.timestamp}
+        </Moment>
+      ),
+    },
   ];
 
   useEffect(()=>{
-    if(props.data){
-      setData(props.data)
-    }else{
-      setData(testData)
-    }
-  },[props.data])
+    setData(testData)
+  },[])
 
   return (
     <div className="h-full w-full max-w-5xl mx-auto ">
-      <h1 className='text-center text-5xl text-gray-700 mt-32 font-black'>{props.data ? 'Recent' : 'Previous'} Predictions</h1>
+      <h1 className='text-center text-5xl text-gray-700 mt-20 font-black'>Recent Predictions</h1>
       <p className="text-center text-base text-gray-400 my-5">Find here all the prediction made or done and their corresponding results bellow</p>
-      <div className="">
+      <div className="mb-10">
         <DataTable
-          columns={columns(!!props.data)}
+          columns={columns}
           pagination={true}
           data={data||[]}
           // selectableRows
         />
       </div>
+      <Bar options={options} data={barData} />;
     </div>
   )
 }

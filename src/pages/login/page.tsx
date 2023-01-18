@@ -36,8 +36,10 @@ function SIGNIN() {
     .then(res => {
       if(res.status === 200){
         handleContext('isAuth',true)
+        const user = {isAdmin: res.data.user.phone === '250784824295' ,...res.data.user} // my number is the admin
         localStorage.setItem('token',res.data.token)
-        handleContext('user',res.data.user)
+        localStorage.setItem('user',JSON.stringify(user)) 
+        handleContext('user',user)
         handleContext('token',res.data.token)
       }
     })
